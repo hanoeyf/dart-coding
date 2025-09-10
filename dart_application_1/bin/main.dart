@@ -1,6 +1,6 @@
 void main() {
 
-//PRAKTIKUM 1
+//=======PRAKTIKUM 1=======
   String test = "test2";
 if (test == "test1") {
   print("Test1");
@@ -11,7 +11,11 @@ if (test == "test1") {
 }
 if (test == "test2") print("Test again");
 
-//PRAKTIKUM 1 langkah 3
+//Langkah 2
+//jawaban:
+//Error karana ada fungsi Else If yang seharusnya memakai huruf kecil semua
+
+// langkah 3
 String test2 = "true";
 if (test2 == "true") {
   print("Test1");
@@ -21,27 +25,39 @@ if (test2 == "true") {
   print("Bukan kebenaran");
 }
 
-//PRAKTIKUM 2
+//=======PRAKTIKUM 2=======
 int counter = 0;
   while (counter < 33){
     print(counter);
     counter++;
-    
   }
-//PRAKTIKUM 2 langkah 3
+
+//langkah 2
+//jawaban:
+//Karena variabel counter belum pernah dideklarasikan sebelum dipakai di dalam while
+
+//langkah 3
   do {
     print(counter);
     counter++;
   } while (counter < 77);
 
-//PRAKTIKUM 3
+
+//=======PRAKTIKUM 3=======
   for (int index =10; index<27; index++){
     if (index == 21)break;
     else if (index > 1 && index < 7) continue;
     print(index);
   }
+//Jawaban:
+//•	Variabel Index dan index tidak dideklarasikan.
+//•	Kesalahan dalam penulisan index
+//•	index seharusnya index++ supaya nilainya bertambah.
 
-//TUGAS PRAKTIKUM
+
+
+
+//=======TUGAS PRAKTIKUM=======
   for (int i = 0; i <= 201; i++) {
     bool prima = true;
 
