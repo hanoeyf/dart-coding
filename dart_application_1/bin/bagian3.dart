@@ -1,4 +1,5 @@
 void main(){
+  //BAGIAN 3
 //=======PRAKTIKUM 1=======
   // var list = [1, 2, 3];
   // assert(list.length == 3);
