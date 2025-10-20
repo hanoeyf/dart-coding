@@ -5,19 +5,37 @@ void main() => runApp(const MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    // ======= Bagian titleSection =======
     Widget titleSection = Container(
-      padding: const EdgeInsets.all(32), // padding 32 di semua sisi
+      padding: const EdgeInsets.all(32),
       child: Row(
         children: [
           Expanded(
-            // (soal 1) Kolom menyesuaikan ruang yang tersisa
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start, // rata kiri
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // (soal 2) Teks pertama di dalam Container agar bisa diberi padding bawah 8
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: const Text(
@@ -27,7 +45,6 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                 ),
-                // (soal 2) Teks kedua berwarna abu-abu
                 Text(
                   'Batu, Malang, Indonesia',
                   style: TextStyle(
@@ -37,7 +54,6 @@ class MyApp extends StatelessWidget {
               ],
             ),
           ),
-          // (soal 3) Ikon bintang merah dan teks '41'
           Icon(
             Icons.star,
             color: Colors.red[500],
@@ -47,7 +63,17 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    // ======= Tampilan utama aplikasi =======
+    Color color = Theme.of(context).primaryColor;
+
+    Widget buttonSection = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildButtonColumn(color, Icons.call, 'CALL'),
+        _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+        _buildButtonColumn(color, Icons.share, 'SHARE'),
+      ],
+    );
+
     return MaterialApp(
       title: 'Flutter layout: Hanifah Kurniasari - 2241720010',
       home: Scaffold(
@@ -57,6 +83,7 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: [
             titleSection,
+            buttonSection,
           ],
         ),
       ),
