@@ -1,6 +1,16 @@
 # filter
 
 A new Flutter project.
+![alt text](image.png)
+Maksud void async pada praktikum 1
+
+Dalam Dart, kata kunci async digunakan untuk menandai bahwa sebuah fungsi bersifat asynchronous. Artinya, fungsi tersebut dapat menjalankan proses yang membutuhkan waktu (misalnya mengambil data dari internet, membaca file, delay, dan lainnya) tanpa menghentikan program utama.
+Jadi void async = fungsi asynchronous yang tidak mengembalikan nilai apapun.
+
+@immutable adalah anotasi dari package Flutter (foundation.dart) yang menyatakan bahwa sebuah class tidak boleh diubah setelah dibuat, artinya:
+
+> Semua variabel di dalam class harus final
+> Nilai property tidak boleh dimodifikasi setelah objek dibuat.
 
 ## Getting Started
 
