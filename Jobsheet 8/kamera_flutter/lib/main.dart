@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
-import 'red_text_widget.dart'; // Pastikan file ini ada di folder lib/
+import 'package:camera/camera.dart'; // Tambahkan import kamera
+import 'widget/takepicture_screen.dart';
+// Jadikan main async agar bisa memanggil availableCameras()
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-void main() {
-  runApp(const MyApp());
+  // Ambil daftar kamera di perangkat
+  final cameras = await availableCameras();
+  final firstCamera = cameras.first;
+
+  runApp(
+    MaterialApp(
+      theme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
+      home: TakePictureScreen(
+        camera: firstCamera,
+      ),
+    ),
+  );
 }
-
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final CameraDescription firstCamera;
+
+  const MyApp({super.key, required this.firstCamera});
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +31,23 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(
+        title: 'Flutter Demo Home Page',
+        camera: firstCamera,
+      ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
   final String title;
+  final CameraDescription camera;
+
+  const MyHomePage({
+    super.key,
+    required this.title,
+    required this.camera,
+  });
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -49,21 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              color: Colors.yellowAccent,
-              width: 50,
-              child: const RedTextWidget(
-                text: 'You have pushed the button this many times:',
-              ),
-            ),
-            Container(
-              color: Colors.greenAccent,
-              width: 100,
-              child: const Text(
-                'You have pushed the button this many times:',
-              ),
-            ),
-            const SizedBox(height: 16),
+            const Text('You have pushed the button this many times:'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
